@@ -4,12 +4,21 @@ import axios from 'axios'
 const ChangeView = ({map, mapZoom, url, setData}) => {
   const getApi = async (url, map) => {
     const {data} = await axios.get(url)
+    console.log(data)
     setData({
-      lat: data.location.lat, 
-      long: data.location.lng,
+      ip: data.ip,
+      lat: data.location.lat,
+      lng: data.location.lng,
+      location: {
+        city: data.location.city, 
+        region: data.location.region,
+        postalCode: data.location.postalCode,
+        timezone: data.location.timezone,
+      },
+      isp: data.isp
     })
     
-    map.setView([data.location.lat, data.location.lng], mapZoom)
+    map.setView([ data.location.lat, data.location.lng ], mapZoom)
   } // end
   
   useEffect(() => {
