@@ -1,6 +1,3 @@
-import React, { useState } from 'react'
-// import axios from 'axios'
-
 const Info = ({ data }) => {
   return (
     <div class="info">
